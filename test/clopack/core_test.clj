@@ -1,6 +1,6 @@
-(ns clopack-dump.core-test
+(ns clopack.core-test
   (:require [clojure.test :refer :all]
-            [clopack-dump.core :refer :all]))
+            [clopack.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

@@ -1,3 +1,3 @@
-# Introduction to clopack-dump
+# Introduction to clopack
 
 TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
