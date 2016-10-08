@@ -33,7 +33,7 @@
   interface, form, filter condition and actions.
   Returns a handler object on success, nil otherwise."
   [interface form condition actions]
-  (let-if [ctx (cn/create-context interface)]
+  (if-let [ctx (cn/create-context interface)]
     {:context ctx :form form :condition condition :actions actions}))
 
 ; some horrible shit right here
@@ -61,9 +61,4 @@
       [_ true]  (do
                   (apply-handler-actions packet)
                   true)
-      [_ false] false
-      
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+      [_ false] false)))
