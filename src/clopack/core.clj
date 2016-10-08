@@ -36,12 +36,15 @@
   (let-if [ctx (cn/create-context interface)]
     {:context ctx :form form :condition condition :actions actions}))
 
+; some horrible shit right here
+
 (defn- apply-handler-actions [packet]
   (let [[condition-or-action action] (take 2 packet)]
-    (if-not (nil? action)
-      (if (condition-or-action packet)
-        (action packet))
-      (condition-or-action packet))))
+    (case [condition-or-action action]
+      [nil nil] nil
+      [_ nil]   (condition-or-action packet)
+      [_ _]     (if (condition-or-action packet)
+                  (action packet)))))
 
 (defn run-handler
   "Runs a data frame handler once.
